@@ -38,6 +38,7 @@ public class PersonnelServiceImpl implements PersonnelService {
 
     @Override
     public List<PersonnelInformation> loadAll() {
-        return personnelMapper.selectAll();
+        // 使用新的联表查询方法
+        return personnelMapper.selectAllWithDepartment();
     }
 }
