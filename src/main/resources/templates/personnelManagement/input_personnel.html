@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="templates::head_include"></div>
+
+    <style type="text/css">
+        .a {
+            margin-top: 20px;
+        }
+
+        .b {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: transparent;
+            display: inline-block;
+            padding: 4px 20px;
+            color: #535ba0;
+            border: 2px solid #535ba0;
+            transition: all 0.5s;
+            border-radius: 8px;
+            margin-top: 40px;
+            margin-right: 10px;
+        }
+
+        .b:hover {
+            color: #fff;
+            background-color: rgba(83, 91, 160, 1);
+        }
+
+        select.a {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        input.a {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        span {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">新增人员</h3>
+                        <form th:action="@{/personnelManagement/create}" method="post">
+                            <div>
+                                <span>员工编号:</span>
+                                <input class="a" readonly="readonly" name="employeeId" th:value="${personnel.employeeId}"><br>
+
+                                <span>员工姓名:</span>
+                                <input class="a" type="text" name="employeeName" required><br>
+
+                                <span>所属部门:</span>
+                                <select class="a" name="departmentId" required>
+                                    <option value="1">人事部</option>
+                                    <option value="2">产品部</option>
+                                    <option value="3">巡检部</option>
+                                    <option value="4">数据部</option>
+                                    <option value="5">养护部</option>
+                                </select><br>
+
+                                <span>员工状态:</span>
+                                <select class="a" name="employeeStatus" required>
+                                    <option value="忙碌">忙碌</option>
+                                    <option value="空闲">空闲</option>
+                                    <option value="不在岗">不在岗</option>
+                                    <option value="离职">离职</option>
+                                </select><br>
+
+                                <span>职位:</span>
+                                <select class="a" name="position" required>
+                                    <option value="领导">领导</option>
+                                    <option value="普通员工">普通员工</option>
+                                </select><br>
+                            </div>
+                            <button class="b" type="submit">确定</button>
+                            <a th:href="@{/personnelManagement/list}" class="b">返回</a>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+</html>
