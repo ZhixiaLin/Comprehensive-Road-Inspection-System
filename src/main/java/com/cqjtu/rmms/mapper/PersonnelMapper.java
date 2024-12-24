@@ -26,4 +26,10 @@ public interface PersonnelMapper {
 
     @Delete("DELETE FROM PersonnelInformation WHERE employeeId = #{employeeId}")
     void deleteByPrimaryKey(Integer employeeId);
+
+
+//    人员对应部门添加联表查询
+    @Select("SELECT p.*, d.departmentName FROM PersonnelInformation p " +
+            "LEFT JOIN Department d ON p.departmentId = d.departmentId")
+    List<PersonnelInformation> selectAllWithDepartment();
 }

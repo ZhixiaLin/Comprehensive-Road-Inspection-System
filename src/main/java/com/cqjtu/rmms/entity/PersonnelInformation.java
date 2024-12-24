@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 @Component
@@ -65,5 +66,19 @@ public class PersonnelInformation implements Serializable {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+
+    // 新增字段（不对应数据库字段）
+    @Transient  // 标记该字段不是数据库字段
+    private String departmentName;
+
+    // getter和setter方法
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
