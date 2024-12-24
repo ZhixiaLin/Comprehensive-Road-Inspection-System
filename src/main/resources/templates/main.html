@@ -19,7 +19,7 @@
             <!-- Header -->
             <header id="header">
                 <div class="logo">
-                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                    <a th:href="@{/security/mainController}">道路综合巡查管理系统</a>
                 </div>
             </header>
 
@@ -32,9 +32,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="banner-caption">
-                                            <h4>欢迎访问<em>城镇道路养护信息</em>管理系统。</h4>
-                                            <span>适用于竣工 &amp; 验收后交付使用的城镇道路</span>
-                                            <p>城镇道路的养护应包括道路设施的检查评价、养护工程和技术档案管理；根据各类道路在城镇中的<strong>重要性</strong>，将城镇道路分为下列三个养护等级：</p>
+                                            <h4>欢迎访问<em>道路综合巡查</em>管理系统。</h4>
+                                            <span>适用于各类道路巡查、养护管理</span>
+                                            <p>在交通强国战略的指引下，我国交通运输事业进入了快速发展的轨道。在这个过程中，道路作为交通运输的重要载体，其安全、畅通和高效运行对于保障国民经济和社会发展具有重要意义。</p>
                                             <div class="primary-button">
                                                 <a href="#">Read More</a>
                                             </div>
@@ -100,12 +100,17 @@
                             <li><a th:href="@{/regularDamage/list}">定期损坏巡检管理 #4</a></li>
                         </ul>
                     </li>
-                    <!--技术状况评价-->
-                    <li><a th:href="@{/regularDamage/listEval}">技术状况评价</a></li>
-                    <li><a href="#">External Link</a></li>
 
-                    <!--分割线-->
-                    <li><a th:href="@{/}">---分割线---</a></li>
+
+                    <!--病害管理-->
+                    <!--TODO-->
+                    <li>
+                        <span class="opener">病害管理</span>
+                        <ul>
+                            <li><a th:href="@{/diseaseBasicInfoManagement/toInput}">新增病害 #1</a></li>
+                            <li><a th:href="@{/diseaseBasicInfoManagement/list}">病害管理 #2</a></li>
+                        </ul>
+                    </li>
 
                     <!--人事管理-->
                     <!--TODO-->
@@ -124,9 +129,7 @@
                         <span class="opener">设备管理</span>
                         <ul>
                             <li><a th:href="@{/deviceManagement/toInput}">设备采购 #1</a></li>
-                            <li><a th:href="@{/deviceManagement/toInput}">设备研发 #2</a></li>
-                            <li><a th:href="@{/deviceManagement/toInput}">设备调试 #3</a></li>
-                            <li><a th:href="@{/deviceManagement/toInput}">设备维护 #4</a></li>
+                            <li><a th:href="@{/deviceManagement/toInput}">设备管理 #2</a></li>
                         </ul>
                     </li>
 
@@ -135,60 +138,24 @@
                     <!--TODO-->
                     <li><a th:href="@{/vehicleManagement/List}">车辆管理</a></li>
 
-                    <!--巡检-->
-                    <!--TODO-->
-                    <li>
-                        <span class="opener">巡检</span>
-                        <ul>
-                            <!-- 日常巡检 -->
-                            <li>
-                                <span class="opener">日常巡检</span>
-                                <ul>
-                                    <li><a th:href="@{/dailyInspect/toInput}">新增日常巡检 #1</a></li>
-                                    <li><a th:href="@{/dailyInspect/list}">日常巡检管理 #2</a></li>
-                                </ul>
-                            </li>
-                            <!-- 定期巡检 -->
-                            <li>
-                                <span class="opener">定期巡检</span>
-                                <ul>
-                                    <li><a th:href="@{/regularSmooth/toInput}">新增定期平整巡检 #1</a></li>
-                                    <li><a th:href="@{/regularSmooth/list}">定期平整巡检管理 #2</a></li>
-                                    <li><a th:href="@{/regularDamage/toInput}">新增定期损坏巡检 #3</a></li>
-                                    <li><a th:href="@{/regularDamage/list}">定期损坏巡检管理 #4</a></li>
-                                </ul>
-                            </li>
-                            <!-- 专项巡检 -->
-                            <!--TODO-->
-                            <li>
-                                <span class="opener">专项巡检</span>
-                                <ul>
-                                    <li><a th:href="@{/specialInspect/toInput}">新增专项巡检</a></li>
-                                    <li><a th:href="@{/specialInspect/list}">专项巡检管理</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
                     <!--巡检管理-->
                     <!--TODO-->
                     <li>
                         <span class="opener">巡检管理</span>
                         <ul>
-                            <li>
-                                <span class="opener">巡检任务管理</span>
-                                <ul>
-                                    <li><a th:href="@{/inspectionTaskManagement/toInput}">新增巡检任务 #1</a></li>
-                                    <li><a th:href="@{/inspectionTaskManagement/list}">巡检任务管理 #2</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="opener">巡检记录管理</span>
-                                <ul>
-                                    <li><a th:href="@{/inspectionRecordManagement/toInput}">新增巡检记录 #1</a></li>
-                                    <li><a th:href="@{/inspectionRecordManagement/list}">巡检记录管理 #2</a></li>
-                                </ul>
-                            </li>
+                            <li><a th:href="@{/deviceManagement/toInput}">新增巡检任务 #1</a></li>
+                            <li><a th:href="@{/deviceManagement/toInput}">巡检任务管理 #2</a></li>
+                            <li><a th:href="@{/deviceManagement/toInput}">巡检记录管理 #3</a></li>
+                        </ul>
+                    </li>
+
+                    <!--派工-->
+                    <!--TODO-->
+                    <li>
+                        <span class="opener">派工</span>
+                        <ul>
+                            <li><a th:href="@{/automaticDispatch/toInput}">手动派工 #1</a></li>
+                            <li><a th:href="@{/manualDispatch/toInput}">派工管理 #2</a></li>
                         </ul>
                     </li>
 
@@ -197,66 +164,29 @@
                     <li>
                         <span class="opener">数据统计分析</span>
                         <ul>
-                            <li><a th:href="@{/dataStatisticsAnalysis/toInput}">新增数据统计分析 #1</a></li>
-                            <li><a th:href="@{/reportGeneration/toInput}">报表生成 #2</a></li>
-                            <li><a th:href="@{/diseaseOrganization/toInput}">病害整理 #3</a></li>
+                            <li><a th:href="@{/regularDamage/listEval}">技术状况评价 #1</a></li>
+                            <li><a th:href="@{/dataStatisticsAnalysis/toInput}">数据统计分析大屏 #2</a></li>
+                            <li><a th:href="@{/reportGeneration/toInput}">报表生成 #3</a></li>
                         </ul>
                     </li>
 
                     <!--数据审查修正-->
                     <!--TODO-->
-                    <li>
-                        <span class="opener">数据审查修正</span>
-                        <ul>
-                            <li><a th:href="@{/reviewCorrection/toInput}">数据审查修正 #1</a></li>
-                            <li><a th:href="@{/diseaseOrganization/toInput}">病害整理 #2</a></li>
-                        </ul>
-                    </li>
+                    <li><a th:href="@{/reviewCorrection/toInput}">数据审查修正</a></li>
 
-                    <!--病害检测-->
-                    <!--TODO-->
-                    <li><a th:href="@{/diseaseDetection/List}">病害检测</a></li>
-
-                    <!--信息管理-->
-                    <!--TODO-->
-                    <li>
-                        <span class="opener">信息管理</span>
-                        <ul>
-                            <li><a th:href="@{/diseaseBasicInfoManagement/toInput}">病害基础信息管理 #1</a></li>
-                            <li><a th:href="@{/roadBasicInfoManagement/toInput}">道路基础信息管理 #2</a></li>
-                        </ul>
-                    </li>
 
                     <!--系统审计-->
                     <!--TODO-->
                     <li><a th:href="@{/systemAudit/List}">系统审计</a></li>
-
-                    <!--派工-->
-                    <!--TODO-->
-                    <li>
-                        <span class="opener">派工</span>
-                        <ul>
-                            <li><a th:href="@{/automaticDispatch/toInput}">自动派工 #1</a></li>
-                            <li><a th:href="@{/manualDispatch/toInput}">手动派工 #2</a></li>
-                        </ul>
-                    </li>
-
-                    <!--进度跟踪-->
-                    <!--TODO-->
-                    <li><a th:href="@{/progressTracking/List}">进度跟踪</a></li>
-
-                    <!--养护结果评价-->
-                    <!--TODO-->
-                    <li><a th:href="@{/maintenanceEvaluation/List}">养护结果评价</a></li>
 
                 </ul>
             </nav>
 
             <!-- Footer -->
             <footer id="footer">
-                <p class="copyright">Copyright &copy; 2019 Company Name
-                    <br>Designed by CQJTU <a href="http://www.cqjtu.edu.cn/" target="_blank"
-                                             title="重庆交通大学">重庆交通大学</a></p>
+                <p class="copyright">Copyright &copy; 2024 智慧猫猫 智能巡检系统.
+                    <br>Designed by ZJUT <a href="http://www.zjut.edu.cn/" target="_blank"
+                                             title="浙江工业大学">浙江工业大学</a></p>
             </footer>
 
         </div>
