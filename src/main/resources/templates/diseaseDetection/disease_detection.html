@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <div th:replace="templates::head_include"></div>
+
+    <style type="text/css">
+        .a {
+            margin-top: 20px;
+        }
+
+        .b {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: transparent;
+            display: inline-block;
+            padding: 4px 20px;
+            color: #535ba0;
+            border: 2px solid #535ba0;
+            transition: all 0.5s;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .b:hover {
+            color: #fff;
+            background-color: rgba(83, 91, 160, 1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #535ba0;
+            color: white;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 3px;
+        }
+
+        .action-buttons .edit {
+            background-color: #ffc107;
+        }
+
+        .action-buttons .delete {
+            background-color: #dc3545;
+        }
+
+        .action-buttons .detail {
+            background-color: #535ba0;
+        }
+
+        .add-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .add-button:hover {
+            background-color: #218838;
+        }
+    </style>
+
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">病害检测管理</h3>
+                        <a href="/diseaseDetection/add" class="add-button">新增病害检测</a>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>病害名称</th>
+                                <th>检测时间</th>
+                                <th>检测人</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- 数据部分动态加载 -->
+                            <tr th:each="disease : ${diseaseList}">
+                                <td th:text="${disease.id}">1</td>
+                                <td th:text="${disease.name}">路面裂缝</td>
+                                <td th:text="${disease.detectionDate}">2024-12-20</td>
+                                <td th:text="${disease.detectionPerson}">张三</td>
+                                <td class="action-buttons">
+                                    <a th:href="@{/diseaseDetection/detail/{id}(id=${disease.id})}" class="detail">详情</a>
+                                    <a th:href="@{/diseaseDetection/edit/{id}(id=${disease.id})}" class="edit">修改</a>
+                                    <a th:href="@{/diseaseDetection/delete/{id}(id=${disease.id})}" class="delete">删除</a>
+                                </td>
+                            </tr>
+                            <!-- 如果没有数据 -->
+                            <tr th:if="${#lists.isEmpty(diseaseList)}">
+                                <td colspan="5">暂无病害检测记录</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+
+</html>
