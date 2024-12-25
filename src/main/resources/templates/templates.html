@@ -198,7 +198,13 @@
 
                 <!--车辆管理-->
                 <!--TODO-->
-                <li><a th:href="@{/vehicleManagement/List}">车辆管理</a></li>
+                <li>
+                    <span class="opener">车辆管理</span>
+                    <ul>
+                        <li><a th:href="@{/vehicleManagement/toInput}">新增车辆 #1</a></li>
+                        <li><a th:href="@{/vehicleManagement/list}">车辆管理 #2</a></li>
+                    </ul>
+                </li>
 
                 <!--巡检管理-->
                 <!--TODO-->
