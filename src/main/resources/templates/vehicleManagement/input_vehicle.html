@@ -79,7 +79,7 @@
 
                 <span>车辆类型:</span>
                 <input class="a" type="text" name="vehicleType"
-                       th:placeholder="${'例如：巡检车-' + (vehicle.vehicleId < 10 ? '00' : vehicle.vehicleId < 100 ? '0' : '') + vehicle.vehicleId}"
+                       th:placeholder="${'例如：巡检车-' + (vehicle.vehicleId < 10 ? '00' : (vehicle.vehicleId < 100 ? '0' : '') + vehicle.vehicleId)}"
                        required><br>
               </div>
               <button class="b" type="submit">提交</button>
