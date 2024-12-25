@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="templates::head_include"></div>
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">系统审计日志</h3>
+
+                        <table border="0" cellspacing="0">
+                            <tr>
+                                <th>编号</th>
+                                <th>操作时间</th>
+                                <th>操作用户</th>
+                                <th>操作内容</th>
+                            </tr>
+                            <tr th:each="log : ${auditLogs}">
+                                <td th:text="${log.id}" nowrap></td>
+                                <td th:text="${log.timestamp}" nowrap></td>
+                                <td th:text="${log.user}" nowrap></td>
+                                <td th:text="${log.action}" nowrap></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+
+</html>
