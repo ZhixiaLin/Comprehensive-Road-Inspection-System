@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="templates::head_include"></div>
+</head>
+
+<body class="is-preload">
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">道路综合巡查管理系统</a>
+                </div>
+            </header>
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">巡检任务管理</h3>
+                        <table border="0" cellspacing="0">
+                            <tr>
+                                <th>任务编号</th>
+                                <th>任务类型</th>
+                                <th>开始时间</th>
+                                <th>结束时间</th>
+                                <th>周期</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="inspectionTask" th:each="task : ${page.list}">
+                                <td th:text="${task.inspectionTaskId}" nowrap></td>
+                                <td th:text="${task.inspectionTaskType}" nowrap></td>
+                                <td th:text="${task.inspectionStartTime}" nowrap></td>
+                                <td th:text="${task.inspectionEndTime}" nowrap></td>
+                                <td th:text="${task.inspectionCycle}" nowrap></td>
+                                <td nowrap>
+                                    <button class="update" th:href="@{/inspectionTask/preUpdate/{inspectionTaskId}(inspectionTaskId=${task.inspectionTaskId})}">
+                                        修改
+                                    </button>
+                                    <button class="delete" th:href="@{/inspectionTask/remove/{inspectionTaskId}(inspectionTaskId=${task.inspectionTaskId})}">删除
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div th:replace="templates::page_info"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+</div>
+<div th:replace="templates::tail_include"></div>
+</body>
+</html>

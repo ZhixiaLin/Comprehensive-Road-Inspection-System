@@ -39,21 +39,19 @@
             <section class="main-banner">
                 <div class="container-fluid">
                     <div align="center">
-                        <h3 class="title">新增病害</h3>
-                        <form th:action="@{/diseaseBasicInfoManagement/create}" method="post" th:object="${disease}">
+                        <h3 class="title">新增巡检任务</h3>
+                        <form th:action="@{/inspectionTask/create}" method="post" th:object="${inspectionTask}">
                             <div>
-                                <span>病害编号:</span>
-                                <input class="a" readonly="readonly" name="diseaseId" th:value="${disease.diseaseId}"><br>
-                                <span>病害特征:</span>
-                                <input class="a" type="text" name="diseaseFeature" placeholder="病害特征"><br>
-                                <span>病害分类:</span>
-                                <input class="a" type="text" name="diseaseCategory" placeholder="病害分类"><br>
-                                <span>病害严重程度:</span>
-                                <select class="a" name="diseaseLevel">
-                                    <option value="轻度">轻度</option>
-                                    <option value="中度">中度</option>
-                                    <option value="严重">严重</option>
-                                </select><br>
+                                <span>巡检任务编号:</span>
+                                <input class="a" readonly="readonly" name="inspectionTaskId" th:value="${inspectionTask.inspectionTaskId}"><br>
+                                <span>巡检任务类型:</span>
+                                <input class="a" type="text" name="inspectionTaskType" placeholder="巡检任务类型"><br>
+                                <span>巡检开始时间:</span>
+                                <input class="a" type="datetime-local" name="inspectionStartTime" placeholder="巡检开始时间"><br>
+                                <span>巡检结束时间:</span>
+                                <input class="a" type="datetime-local" name="inspectionEndTime" placeholder="巡检结束时间"><br>
+                                <span>巡检周期:</span>
+                                <input class="a" type="text" name="inspectionCycle" placeholder="巡检周期"><br>
                             </div>
                             <button class="b" type="submit">确定</button>
                         </form>
