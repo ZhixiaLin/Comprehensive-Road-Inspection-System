@@ -30,6 +30,7 @@
 2. 将项目导入到 **IntelliJ IDEA** 中，然后利用 gradle 版本控制工具导入 jar。
 3. 修改项目中 */rmms/src/main/resources/application.yml 的数据库连接名及用户验证。
 4. 启动主函数 App.java 即可。最后打开浏览器，输入 http://localhost:8090/rmms，即可浏览系统。
+http://localhost:8090/rmms
 
 ### 项目演示
 
