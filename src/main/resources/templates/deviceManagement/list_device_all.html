@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="templates::head_include"></div>
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">设备管理</h3>
+
+                        <table border="0" cellspacing="0">
+                            <tr>
+                                <th>编号</th>
+                                <th>设备名称</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="device" th:each="device : ${devices}">
+                                <td th:text="${device.deviceId}" nowrap></td>
+                                <td th:text="${device.deviceName}" nowrap></td>
+                                <td th:text="${device.status}" nowrap></td>
+                                <td nowrap>
+                                    <a>
+                                        <button class="b">修改</button>
+                                    </a>
+                                    <a>
+                                        <button class="b">删除</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+</html>
