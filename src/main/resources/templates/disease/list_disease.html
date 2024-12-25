@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="templates::head_include"></div>
+</head>
+
+<body class="is-preload">
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">道路综合巡查管理系统</a>
+                </div>
+            </header>
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">病害管理</h3>
+                        <table border="0" cellspacing="0">
+                            <tr>
+                                <th>病害编号</th>
+                                <th>病害特征</th>
+                                <th>病害分类</th>
+                                <th>病害严重程度</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="disease" th:each="disease : ${page.list}">
+                                <td th:text="${disease.diseaseId}" nowrap></td>
+                                <td th:text="${disease.diseaseFeature}" nowrap></td>
+                                <td th:text="${disease.diseaseCategory}" nowrap></td>
+                                <td th:text="${disease.diseaseLevel}" nowrap></td>
+                                <td nowrap>
+                                    <button class="update" th:href="@{/diseaseBasicInfoManagement/preUpdate/{diseaseId}(diseaseId=${disease.diseaseId})}">
+                                        修改
+                                    </button>
+                                    <button class="delete" th:href="@{/diseaseBasicInfoManagement/remove/{diseaseId}(diseaseId=${disease.diseaseId})}">删除
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div th:replace="templates::page_info"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+</div>
+<div th:replace="templates::tail_include"></div>
+</body>
+</html>
