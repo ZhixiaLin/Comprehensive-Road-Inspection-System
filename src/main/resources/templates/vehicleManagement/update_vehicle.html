@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="templates::head_include"></div>
+    <style type="text/css">
+        .a {
+            margin-top: 20px;
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .b {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: transparent;
+            display: inline-block;
+            padding: 4px 20px;
+            color: #535ba0;
+            border: 2px solid #535ba0;
+            transition: all 0.5s;
+            border-radius: 8px;
+            margin-top: 40px;
+            margin-right: 10px;
+        }
+
+        .b:hover {
+            color: #fff;
+            background-color: rgba(83, 91, 160, 1);
+        }
+
+        span {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        select.a {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">修改车辆信息</h3>
+                        <form th:action="@{/vehicleManagement/update}" method="post">
+                            <input type="hidden" name="vehicleId" th:value="${vehicle.vehicleId}">
+                            <div>
+                                <span>车辆编号:</span>
+                                <input class="a" type="text" th:value="${vehicle.vehicleId}" readonly><br>
+
+                                <span>车辆类型:</span>
+                                <input class="a" type="text" name="vehicleType" th:value="${vehicle.vehicleType}" required><br>
+
+                                <span>车辆状态:</span>
+                                <select class="a" name="vehicleStatus">
+                                    <option value="true" th:selected="${vehicle.vehicleStatus}">在库</option>
+                                    <option value="false" th:selected="${!vehicle.vehicleStatus}">派出</option>
+                                </select><br>
+                            </div>
+                            <button type="submit" class="b">更新</button>
+                            <a href="/rmms/vehicleManagement/list" class="b">返回</a>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+</div>
+
+<div th:replace="templates::tail_include"></div>
+</body>
+</html>

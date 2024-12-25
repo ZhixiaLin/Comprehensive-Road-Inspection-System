@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="templates::head_include"></div>
+    <style type="text/css">
+        table {
+            width: 90%;
+            margin: 25px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #535ba0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell; /* 确保以表格单元格的方式处理 */
+        }
+        table th {
+            text-align: center !important; /* 强制水平居中 */
+            vertical-align: middle !important; /* 强制垂直居中 */
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        tr:hover {
+            background-color: #f5f6f8;
+        }
+
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .btn {
+            font-size: 13px;
+            font-weight: 600;
+            background-color: transparent;
+            display: inline-block;
+            padding: 6px 16px;
+            color: #535ba0;
+            border: 1.5px solid #535ba0;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            margin: 0 4px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            color: #fff;
+            background-color: #535ba0;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(83, 91, 160, 0.2);
+        }
+
+        .btn-primary {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 24px;
+            border: 2px solid #535ba0;
+            margin: 20px 0;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .status-in {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .status-out {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-warning {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-warning:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            border-color: #28a745;
+            color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div class="content-wrapper" style="margin-top: 50px; margin-bottom: 50px; padding: 0 40px;">
+                        <!-- 这个div用来调整整体内容的位置 -->
+                        <div class="content-box" style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                            <!-- 这个div用来给内容添加背景和阴影 -->
+                            <div align="center">
+                                <h3 class="title">车辆管理</h3>
+<!--                                <a href="/rmms/vehicleManagement/toInput" class="btn btn-primary">新增车辆</a>-->
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>车辆编号</th>
+                                        <th>车辆类型</th>
+                                        <th>车辆状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="vehicle : ${page.list}">
+                                        <td th:text="${vehicle.vehicleId}"></td>
+                                        <td th:text="${vehicle.vehicleType}"></td>
+                                        <td>
+                                    <span th:class="${vehicle.vehicleStatus ? 'status-badge status-in' : 'status-badge status-out'}"
+                                          th:text="${vehicle.vehicleStatus ? '在库' : '派出'}">
+                                    </span>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{'/vehicleManagement/preUpdate/' + ${vehicle.vehicleId}}"
+                                               class="btn">修改</a>
+                                            <a th:if="${vehicle.vehicleStatus}"
+                                               th:href="@{'/vehicleManagement/dispatch/' + ${vehicle.vehicleId}}"
+                                               class="btn btn-warning"
+                                               onclick="return confirm('确定要派出该车辆吗？')">派出</a>
+                                            <a th:if="${!vehicle.vehicleStatus}"
+                                               th:href="@{'/vehicleManagement/return/' + ${vehicle.vehicleId}}"
+                                               class="btn btn-success"
+                                               onclick="return confirm('确定要将该车辆入库吗？')">入库</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div th:replace="templates::page_info"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+</div>
+
+<div th:replace="templates::tail_include"></div>
+</body>
+</html>
