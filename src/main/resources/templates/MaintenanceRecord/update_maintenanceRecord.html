@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
   <div th:replace="templates::head_include"></div>
 
   <style type="text/css">
@@ -22,15 +21,35 @@
       transition: all 0.5s;
       border-radius: 8px;
       margin-top: 40px;
+      margin-right: 10px;
     }
 
-    .b :hover {
+    .b:hover {
       color: #fff;
       background-color: rgba(83, 91, 160, 1);
+    }
 
+    select.a {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    input.a {
+      width: 200px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    span {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
     }
   </style>
-
 </head>
 
 <body class="is-preload">
@@ -58,28 +77,37 @@
               <div>
                 <span>养护记录ID:</span>
                 <input class="a" name="maintenanceRecordId" readonly="readonly" th:value="*{maintenanceRecordId}"><br>
+
                 <span>员工ID:</span>
                 <input class="a" type="text" name="employeeId" th:value="*{employeeId}" placeholder="员工ID"><br>
+
                 <span>车辆ID:</span>
                 <input class="a" type="text" name="vehicleId" th:value="*{vehicleId}" placeholder="车辆ID"><br>
+
                 <span>病害记录ID:</span>
                 <input class="a" type="text" name="diseaseRecordId" th:value="*{diseaseRecordId}" placeholder="病害记录ID"><br>
+
                 <span>养护时间:</span>
                 <input class="a" type="datetime-local" name="maintenanceTime" th:value="*{maintenanceTime}" placeholder="维护时间"><br>
+
                 <span>养护状态:</span>
-                <input class="a" type="text" name="maintenanceStatus" th:value="*{maintenanceStatus}" placeholder="维护状态"><br>
+                <select class="a" name="maintenanceStatus" required>
+                  <option value="进行中" th:selected="*{maintenanceStatus == '进行中'}">进行中</option>
+                  <option value="已完成" th:selected="*{maintenanceStatus == '已完成'}">已完成</option>
+                  <option value="已取消" th:selected="*{maintenanceStatus == '已取消'}">已取消</option>
+                </select><br>
+
                 <span>养护评价:</span>
                 <input class="a" type="text" name="maintenanceReview" th:value="*{maintenanceReview}" placeholder="维护评审"><br>
               </div>
               <div>
                 <button class="b" type="submit">确定</button>
+                <a th:href="@{/MaintenanceRecord/list}" class="b">返回</a>
               </div>
             </form>
           </div>
         </div>
       </section>
-
-
 
     </div>
   </div>
@@ -92,6 +120,4 @@
 <div th:replace="templates::tail_include"></div>
 
 </body>
-
-
 </html>
