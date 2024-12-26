@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <div th:replace="templates::head_include"></div>
+
+  <style type="text/css">
+    .a {
+      margin-top: 20px;
+    }
+
+    .b {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: transparent;
+      display: inline-block;
+      padding: 4px 20px;
+      color: #535ba0;
+      border: 2px solid #535ba0;
+      transition: all 0.5s;
+      border-radius: 8px;
+      margin-top: 40px;
+      margin-right: 10px;
+    }
+
+    .b:hover {
+      color: #fff;
+      background-color: rgba(83, 91, 160, 1);
+    }
+
+    select.a {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    input.a {
+      width: 200px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    span {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- Header -->
+      <header id="header">
+        <div class="logo">
+          <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+        </div>
+      </header>
+
+      <!-- Banner -->
+      <section class="main-banner">
+        <div class="container-fluid">
+          <div align="center">
+            <h3 class="title">修改养护记录</h3>
+            <form th:action="@{/MaintenanceRecord/update}" method="post" th:object="${maintenanceRecord}">
+              <div>
+                <span>养护记录ID:</span>
+                <input class="a" name="maintenanceRecordId" readonly="readonly" th:value="*{maintenanceRecordId}"><br>
+
+                <span>员工ID:</span>
+                <input class="a" type="text" name="employeeId" th:value="*{employeeId}" placeholder="员工ID"><br>
+
+                <span>车辆ID:</span>
+                <input class="a" type="text" name="vehicleId" th:value="*{vehicleId}" placeholder="车辆ID"><br>
+
+                <span>病害记录ID:</span>
+                <input class="a" type="text" name="diseaseRecordId" th:value="*{diseaseRecordId}" placeholder="病害记录ID"><br>
+
+                <span>养护时间:</span>
+                <input class="a" type="datetime-local" name="maintenanceTime" th:value="*{maintenanceTime}" placeholder="维护时间"><br>
+
+                <span>养护状态:</span>
+                <select class="a" name="maintenanceStatus" required>
+                  <option value="进行中" th:selected="*{maintenanceStatus == '进行中'}">进行中</option>
+                  <option value="已完成" th:selected="*{maintenanceStatus == '已完成'}">已完成</option>
+                  <option value="已取消" th:selected="*{maintenanceStatus == '已取消'}">已取消</option>
+                </select><br>
+
+                <span>养护评价:</span>
+                <input class="a" type="text" name="maintenanceReview" th:value="*{maintenanceReview}" placeholder="维护评审"><br>
+              </div>
+              <div>
+                <button class="b" type="submit">确定</button>
+                <a th:href="@{/MaintenanceRecord/list}" class="b">返回</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+</html>

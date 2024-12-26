@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <div th:replace="templates::head_include"></div>
+
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">派工管理</h3>
+
+                        <form action="" method="get">
+                            <input type="hidden" name="_method" value="DELETE"/>
+                        </form>
+
+                        <table border="0" cellspacing="0">
+                            <tr>
+                                <th>养护记录ID</th>
+                                <th>员工ID</th>
+                                <th>车辆ID</th>
+                                <th>病害记录ID</th>
+                                <th>养护时间</th>
+                                <th>养护状态</th>
+                                <th>养护评价</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="MaintenanceRecord" th:each="record : ${page.list}">
+                                <td th:text="${record.maintenanceRecordId}" nowrap></td>
+                                <td th:text="${record.employeeId}" nowrap></td>
+                                <td th:text="${record.vehicleId}" nowrap></td>
+                                <td th:text="${record.diseaseRecordId}" nowrap></td>
+                                <td th:text="${#temporals.format(record.maintenanceTime, 'yyyy-MM-dd HH:mm:ss')}" nowrap></td>
+                                <td th:text="${record.maintenanceStatus}" nowrap></td>
+                                <td th:text="${record.maintenanceReview}" nowrap></td>
+                                <td nowrap>
+                                    <button class="update" th:href="@{/MaintenanceRecord/preUpdate/{maintenanceRecordId}(maintenanceRecordId=${record.maintenanceRecordId})}">
+                                        修改
+                                    </button>
+<!--                                    <button class="delete" th:href="@{/MaintenanceRecord/remove/{maintenanceRecordId}(maintenanceRecordId=${record.maintenanceRecordId})}">-->
+<!--                                        删除-->
+<!--                                    </button>-->
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                        <div th:replace="templates::page_info"></div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+
+
+</html>

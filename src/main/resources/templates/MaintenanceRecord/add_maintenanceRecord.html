@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <div th:replace="templates::head_include"></div>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h3 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .form-group span {
+      flex: 0 0 120px;
+      text-align: right;
+      margin-right: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .form-group input {
+      flex: 1;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #535ba0;
+      outline: none;
+    }
+
+    .form-actions {
+      margin-top: 20px;
+    }
+
+    .form-actions button {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: transparent;
+      color: #535ba0;
+      border: 2px solid #535ba0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+
+    .form-actions button:hover {
+      background-color: #535ba0;
+      color: white;
+    }
+
+    .a {
+      margin-top: 20px;
+    }
+
+    .b {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: transparent;
+      display: inline-block;
+      padding: 4px 20px;
+      color: #535ba0;
+      border: 2px solid #535ba0;
+      transition: all 0.5s;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+
+    .b:hover {
+      color: #fff;
+      background-color: rgba(83, 91, 160, 1);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+<div id="wrapper">
+  <div id="main">
+    <div class="inner">
+      <header id="header">
+        <div class="logo">
+          <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+        </div>
+      </header>
+      <form class="form-container" th:action="@{/MaintenanceRecord/add}" method="post" th:object="${maintenanceRecord}">
+        <h3 class="title">手动派工</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <span>养护记录ID:</span>
+            <input type="text" name="maintenanceRecordId" th:field="*{maintenanceRecordId}" readonly>
+          </div>
+          <div class="form-group">
+            <span>派出员工:</span>
+            <select name="employeeId" th:field="*{employeeId}">
+              <option th:each="personnel : ${personnelList}" th:value="${personnel.employeeId}" th:text="${personnel.employeeName}"></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <span>派出车辆:</span>
+            <select name="vehicleId" th:field="*{vehicleId}">
+              <option th:each="vehicle : ${vehicleList}" th:value="${vehicle.vehicleId}" th:text="${vehicle.vehicleType}"></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <span>病害记录ID:</span>
+            <select name="diseaseRecordId" th:field="*{diseaseRecordId}">
+              <option th:each="diseaseRecord : ${diseaseRecordList}" th:value="${diseaseRecord.diseaseRecordId}" th:text="${diseaseRecord.diseaseRecordId}"></option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <span>养护时间:</span>
+          <input type="datetime-local" name="maintenanceTime" th:field="*{maintenanceTime}">
+        </div>
+        <div class="form-group">
+          <span>养护状态:</span>
+          <select name="maintenanceStatus" th:field="*{maintenanceStatus}">
+            <option value="未养护">未养护</option>
+            <option value="养护中">养护中</option>
+            <option value="已养护">已养护</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <span>养护评价:</span>
+          <input type="text" name="maintenanceReview" th:field="*{maintenanceReview}">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="b">新增</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Sidebar -->
+  <div id="sidebar" th:replace="templates::sidebar"></div>
+</div>
+
+</body>
+
+</html>

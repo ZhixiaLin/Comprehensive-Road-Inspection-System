@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <div th:replace="templates::head_include"></div>
+
+</head>
+
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">数据审查与修正</h3>
+
+                        <form action="" method="get">
+                            <input type="hidden" name="_method" value="DELETE"/>
+                        </form>
+                        <table border="0" cellspacing="0">
+                            <tr>
+                                <th>病害记录ID</th>
+                                <th>病害坐标</th>
+                                <th>道路ID</th>
+                                <th>病害ID</th>
+                                <th>发现时间</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="DiseaseRecord" th:each="record, recordStat : ${page.list}">
+                                <td th:text="${record.diseaseRecordId}" nowrap></td>
+                                <td th:text="${record.diseaseCoordinates}" nowrap></td>
+                                <td th:text="${record.roadId}" nowrap></td>
+                                <td th:text="${record.diseaseId}" nowrap></td>
+                                <td th:text="${#temporals.format(record.discoveryTime, 'yyyy-MM-dd HH:mm:ss')}" nowrap></td>
+                                <td nowrap>
+                                    <button class="update" th:href="@{/DiseaseRecord/preUpdate/{diseaseRecordId}(diseaseRecordId=${record.diseaseRecordId})}">
+                                        修改
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div th:replace="templates::page_info"></div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+
+</div>
+
+<div th:replace="templates::tail_include"></div>
+
+</body>
+
+
+</html>
