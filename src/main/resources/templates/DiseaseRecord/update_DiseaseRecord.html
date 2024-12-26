@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="templates::head_include"></div>
+    <style type="text/css">
+        .a {
+            margin-top: 20px;
+        }
+        .b {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: transparent;
+            display: inline-block;
+            padding: 4px 20px;
+            color: #535ba0;
+            border: 2px solid #535ba0;
+            transition: all 0.5s;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        .b:hover {
+            color: #fff;
+            background-color: rgba(83, 91, 160, 1);
+        }
+    </style>
+</head>
+<body class="is-preload">
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+            <header id="header">
+                <div class="logo">
+                    <a th:href="@{/security/mainController}">轻量级城镇道路养护信息管理系统</a>
+                </div>
+            </header>
+            <section class="main-banner">
+                <div class="container-fluid">
+                    <div align="center">
+                        <h3 class="title">数据审查</h3>
+                        <form th:action="@{/DiseaseRecord/update}" method="post" th:object="${diseaseRecord}">
+                            <div>
+                                <span>病害记录ID:</span>
+                                <input class="a" name="diseaseRecordId" readonly="readonly" th:value="*{diseaseRecordId}"><br>
+                                <span>病害坐标:</span>
+                                <input class="a" type="text" name="diseaseCoordinates" th:value="*{diseaseCoordinates}" placeholder="病害坐标"><br>
+                                <span>道路ID:</span>
+                                <input class="a" type="text" name="roadId" th:value="*{roadId}" placeholder="道路ID"><br>
+                                <span>病害ID:</span>
+                                <input class="a" type="text" name="diseaseId" th:value="*{diseaseId}" placeholder="病害ID"><br>
+                                <span>发现时间:</span>
+                                <input class="a" type="datetime-local" name="discoveryTime" th:value="*{discoveryTime}" placeholder="发现时间"><br>
+                            </div>
+                            <div>
+                                <button class="b" type="submit">确定</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="sidebar" th:replace="templates::sidebar"></div>
+</div>
+<div th:replace="templates::tail_include"></div>
+</body>
+</html>
