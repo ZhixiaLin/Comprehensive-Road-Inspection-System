@@ -4,43 +4,81 @@
 <head>
   <div th:replace="templates::head_include"></div>
   <style type="text/css">
-    .a {
-      margin-top: 20px;
-      width: 200px;
-      padding: 5px;
+    /* 表单容器样式 */
+    .form-container {
+      margin: 20px auto;
+      max-width: 500px; /* 表单整体宽度，适配不同屏幕 */
+      padding: 20px;
+      background-color: #f9f9f9; /* 增加背景色，视觉区分 */
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
+    }
+
+    .form-container h3 {
+      text-align: center; /* 标题居中 */
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #535ba0;
+    }
+
+    /* 表单每一行的布局样式 */
+    .form-row {
+      display: flex;
+      align-items: center; /* 垂直居中 */
+      margin-bottom: 15px;
+    }
+
+    .form-row span {
+      width: 100px; /* 标签宽度 */
+      font-weight: bold;
+      text-align: right;
+      margin-right: 10px; /* 间距 */
+    }
+
+    /* 表单控件（输入框和下拉框）样式 */
+    .form-row input,
+    .form-row select {
+      flex: 1; /* 输入框和下拉框自动拉伸 */
+      padding: 8px;
+      font-size: 14px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      box-sizing: border-box; /* 包括内边距和边框在宽度内 */
     }
 
-    .b {
+    /* 按钮样式 */
+    .form-container button {
       font-size: 14px;
-      font-weight: 700;
+      font-weight: bold;
       text-transform: uppercase;
-      background-color: transparent;
-      display: inline-block;
-      padding: 4px 20px;
+      display: block; /* 块级元素 */
+      padding: 10px 25px;
       color: #535ba0;
       border: 2px solid #535ba0;
-      transition: all 0.5s;
       border-radius: 8px;
-      margin-top: 40px;
-      margin-right: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin: 20px auto 0; /* 居中显示并增加上下间距 */
+      background-color: transparent;
+      cursor: pointer;
     }
 
-    .b:hover {
+    .form-container button:hover {
       color: #fff;
-      background-color: rgba(83, 91, 160, 1);
+      background-color: #535ba0;
     }
 
-    span {
-      display: inline-block;
-      width: 100px;
-      text-align: right;
-      margin-right: 10px;
-    }
+    /* 响应式适配 */
+    @media (max-width: 768px) {
+      .form-container {
+        max-width: 90%; /* 在小屏幕下表单宽度为屏幕的 90% */
+      }
 
-    select.a {
-      width: 200px;
+      .form-row span {
+        width: 80px; /* 标签宽度减少 */
+      }
     }
   </style>
 </head>
@@ -57,43 +95,51 @@
 
       <section class="main-banner">
         <div class="container-fluid">
-          <div align="center">
-            <h3 class="title">修改人员信息</h3>
+          <div class="form-container">
+            <h3>修改人员信息</h3>
             <form th:action="@{/personnelManagement/update}" method="post">
               <input type="hidden" name="employeeId" th:value="${personnel.employeeId}">
-              <div>
+
+              <div class="form-row">
                 <span>员工编号:</span>
-                <input class="a" type="text" th:value="${personnel.employeeId}" readonly><br>
+                <input type="text" th:value="${personnel.employeeId}" readonly>
+              </div>
 
+              <div class="form-row">
                 <span>员工姓名:</span>
-                <input class="a" type="text" name="employeeName"
-                       th:value="${personnel.employeeName}" required><br>
+                <input type="text" name="employeeName" th:value="${personnel.employeeName}" required>
+              </div>
 
+              <div class="form-row">
                 <span>所属部门:</span>
-                <select class="a" name="departmentId" required>
+                <select name="departmentId" required>
                   <option value="1" th:selected="${personnel.departmentId == 1}">人事部</option>
                   <option value="2" th:selected="${personnel.departmentId == 2}">产品部</option>
                   <option value="3" th:selected="${personnel.departmentId == 3}">巡检部</option>
                   <option value="4" th:selected="${personnel.departmentId == 4}">数据部</option>
                   <option value="5" th:selected="${personnel.departmentId == 5}">养护部</option>
-                </select><br>
+                </select>
+              </div>
 
+              <div class="form-row">
                 <span>员工状态:</span>
-                <select class="a" name="employeeStatus" required>
+                <select name="employeeStatus" required>
                   <option value="忙碌" th:selected="${personnel.employeeStatus == '忙碌'}">忙碌</option>
                   <option value="空闲" th:selected="${personnel.employeeStatus == '空闲'}">空闲</option>
                   <option value="不在岗" th:selected="${personnel.employeeStatus == '不在岗'}">不在岗</option>
                   <option value="离职" th:selected="${personnel.employeeStatus == '离职'}">离职</option>
-                </select><br>
+                </select>
+              </div>
 
+              <div class="form-row">
                 <span>职位:</span>
-                <select class="a" name="position" required>
+                <select name="position" required>
                   <option value="领导" th:selected="${personnel.position == '领导'}">领导</option>
                   <option value="普通员工" th:selected="${personnel.position == '普通员工'}">普通员工</option>
-                </select><br>
+                </select>
               </div>
-              <button type="submit" class="b">确定</button>
-              <a href="/rmms/personnelManagement/list" class="b">返回</a>
+
+              <button type="submit">确定</button>
             </form>
           </div>
         </div>
