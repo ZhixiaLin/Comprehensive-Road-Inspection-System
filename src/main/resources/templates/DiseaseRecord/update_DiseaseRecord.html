@@ -5,6 +5,10 @@
     <style type="text/css">
         .a {
             margin-top: 20px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
         }
         .b {
             font-size: 14px;
@@ -18,10 +22,17 @@
             transition: all 0.5s;
             border-radius: 8px;
             margin-top: 40px;
+            margin-right: 10px;
         }
         .b:hover {
             color: #fff;
             background-color: rgba(83, 91, 160, 1);
+        }
+        span {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -53,6 +64,7 @@
                             </div>
                             <div>
                                 <button class="b" type="submit">确定</button>
+                                <a th:href="@{/DiseaseRecord/list}" class="b">返回</a>
                             </div>
                         </form>
                     </div>
