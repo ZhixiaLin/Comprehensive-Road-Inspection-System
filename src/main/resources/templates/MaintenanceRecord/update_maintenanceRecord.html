@@ -5,56 +5,105 @@
   <div th:replace="templates::head_include"></div>
 
   <style type="text/css">
-    .a {
-      margin-top: 20px;
-    }
-
-    .b {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      background-color: transparent;
-      display: inline-block;
-      padding: 4px 20px;
-      color: #535ba0;
-      border: 2px solid #535ba0;
-      transition: all 0.5s;
+    /* 表单容器样式 */
+    .form-container {
+      margin: 20px auto;
+      max-width: 600px; /* 表单整体宽度 */
+      padding: 20px;
+      background-color: #f9f9f9; /* 表单背景色 */
+      border: 1px solid #e0e0e0;
       border-radius: 8px;
-      margin-top: 40px;
-      margin-right: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 提升视觉效果 */
     }
 
-    .b:hover {
-      color: #fff;
-      background-color: rgba(83, 91, 160, 1);
+    .form-container h3 {
+      text-align: center; /* 标题居中 */
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: 500;
+      /*color: #535ba0;*/
     }
 
-    select.a {
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      width: 200px;
+    /* 表单行布局 */
+    .form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
     }
 
-    input.a {
-      width: 200px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    span {
-      display: inline-block;
-      width: 100px;
+    .form-row span {
+      width: 120px; /* 标签宽度 */
+      font-weight: bold;
       text-align: right;
       margin-right: 10px;
+    }
+
+    .form-row input,
+    .form-row select {
+      flex: 1; /* 输入框与下拉框自动拉伸 */
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    /* 按钮样式 */
+    .form-container button,
+    .form-container a {
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 10px 25px;
+      color: #535ba0;
+      border: 2px solid #535ba0;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin: 10px 5px 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    .form-container button:hover,
+    .form-container a:hover {
+      color: #fff;
+      background-color: #535ba0;
+    }
+
+    .form-container button {
+      background-color: transparent;
+    }
+
+    /* 响应式支持 */
+    @media (max-width: 768px) {
+      .form-container {
+        max-width: 90%; /* 小屏幕下表单宽度 */
+      }
+
+      .form-row {
+        flex-direction: column; /* 标签与输入框垂直排列 */
+        align-items: flex-start;
+      }
+
+      .form-row span {
+        width: 100%; /* 标签宽度自适应 */
+        text-align: left; /* 标签左对齐 */
+        margin-bottom: 5px; /* 标签与输入框间距 */
+      }
+
+      .form-row input,
+      .form-row select {
+        width: 100%; /* 输入框与下拉框宽度自适应 */
+      }
     }
   </style>
 </head>
 
 <body class="is-preload">
 
-<!-- Wrapper -->
 <div id="wrapper">
 
   <!-- Main -->
@@ -70,42 +119,53 @@
 
       <!-- Banner -->
       <section class="main-banner">
-        <div class="container-fluid">
-          <div align="center">
-            <h3 class="title">修改养护记录</h3>
-            <form th:action="@{/MaintenanceRecord/update}" method="post" th:object="${maintenanceRecord}">
-              <div>
-                <span>养护记录ID:</span>
-                <input class="a" name="maintenanceRecordId" readonly="readonly" th:value="*{maintenanceRecordId}"><br>
+        <div class="form-container">
+          <h3>修改养护记录</h3>
+          <form th:action="@{/MaintenanceRecord/update}" method="post" th:object="${maintenanceRecord}">
+            <div class="form-row">
+              <span>养护记录ID:</span>
+              <input type="text" name="maintenanceRecordId" readonly="readonly" th:field="*{maintenanceRecordId}">
+            </div>
 
-                <span>员工ID:</span>
-                <input class="a" type="text" name="employeeId" th:value="*{employeeId}" placeholder="员工ID"><br>
+            <div class="form-row">
+              <span>员工ID:</span>
+              <input type="text" name="employeeId" th:field="*{employeeId}" placeholder="员工ID">
+            </div>
 
-                <span>车辆ID:</span>
-                <input class="a" type="text" name="vehicleId" th:value="*{vehicleId}" placeholder="车辆ID"><br>
+            <div class="form-row">
+              <span>车辆ID:</span>
+              <input type="text" name="vehicleId" th:field="*{vehicleId}" placeholder="车辆ID">
+            </div>
 
-                <span>病害记录ID:</span>
-                <input class="a" type="text" name="diseaseRecordId" th:value="*{diseaseRecordId}" placeholder="病害记录ID"><br>
+            <div class="form-row">
+              <span>病害记录ID:</span>
+              <input type="text" name="diseaseRecordId" th:field="*{diseaseRecordId}" placeholder="病害记录ID">
+            </div>
 
-                <span>养护时间:</span>
-                <input class="a" type="datetime-local" name="maintenanceTime" th:value="*{maintenanceTime}" placeholder="维护时间"><br>
+            <div class="form-row">
+              <span>养护时间:</span>
+              <input type="datetime-local" name="maintenanceTime" th:field="*{maintenanceTime}" placeholder="维护时间">
+            </div>
 
-                <span>养护状态:</span>
-                <select class="a" name="maintenanceStatus" required>
-                  <option value="进行中" th:selected="*{maintenanceStatus == '进行中'}">进行中</option>
-                  <option value="已完成" th:selected="*{maintenanceStatus == '已完成'}">已完成</option>
-                  <option value="已取消" th:selected="*{maintenanceStatus == '已取消'}">已取消</option>
-                </select><br>
+            <div class="form-row">
+              <span>养护状态:</span>
+              <select name="maintenanceStatus" th:field="*{maintenanceStatus}" required>
+                <option value="进行中" th:selected="*{maintenanceStatus == '进行中'}">进行中</option>
+                <option value="已完成" th:selected="*{maintenanceStatus == '已完成'}">已完成</option>
+                <option value="已取消" th:selected="*{maintenanceStatus == '已取消'}">已取消</option>
+              </select>
+            </div>
 
-                <span>养护评价:</span>
-                <input class="a" type="text" name="maintenanceReview" th:value="*{maintenanceReview}" placeholder="维护评审"><br>
-              </div>
-              <div>
-                <button class="b" type="submit">确定</button>
-                <a th:href="@{/MaintenanceRecord/list}" class="b">返回</a>
-              </div>
-            </form>
-          </div>
+            <div class="form-row">
+              <span>养护评价:</span>
+              <input type="text" name="maintenanceReview" th:field="*{maintenanceReview}" placeholder="维护评审">
+            </div>
+
+            <div style="text-align: center;">
+              <button type="submit">确定</button>
+              <a th:href="@{/MaintenanceRecord/list}">返回</a>
+            </div>
+          </form>
         </div>
       </section>
 
