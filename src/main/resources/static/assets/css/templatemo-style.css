@@ -1199,11 +1199,16 @@ section.buttons .container-fluid {
 }
 
 #header .logo {
-    text-align: right;
-    display: inline-block;	
+    /*text-align: right;*/
+    /*display: inline-block;	*/
     width: 100%;
     height: 100px;
     line-height: 100px;
+
+    text-align: center; /* 将文字居中对齐 */
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中（如果有高度） */
 }
 #header .logo a {
 	font-size: 36px;
