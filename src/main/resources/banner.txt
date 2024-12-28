@@ -20,7 +20,7 @@ ${AnsiColor.BLUE}
        \:::\____\                |::|    |                                                             \::::/    /
         \::/    /                |::|____|                                                              \::/____/
          \/____/                  ~~                                                                     ~~
-轻量级城镇道路养护信息管理系统
+道路综合巡查管理系统
 Lightweight urban road maintenance information management system
 -----版本号-----
 ${spring-boot.version}
