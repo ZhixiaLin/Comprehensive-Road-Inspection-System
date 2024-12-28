@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 @Component
-@Table(name = "tbl_daily_inspect")
+@Table(name = "daily_inspect")
 public class DailyInspect implements Serializable {
 
     @Id

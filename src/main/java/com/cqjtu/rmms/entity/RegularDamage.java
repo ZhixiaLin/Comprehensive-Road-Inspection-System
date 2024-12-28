@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Component
-@Table(name = "tbl_regular_damage")
+@Table(name = "regular_damage")
 public class RegularDamage implements Serializable {
 
     @Id
