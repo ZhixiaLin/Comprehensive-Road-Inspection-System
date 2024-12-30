@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Component
-@Table(name = "tbl_regular_smooth")
+@Table(name = "regular_smooth")
 public class RegularSmooth implements Serializable {
 
     @Id
