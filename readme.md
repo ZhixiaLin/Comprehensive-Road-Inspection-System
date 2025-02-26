@@ -1,4 +1,38 @@
+# Comprehensive Road Inspection Management System
+
+Course Design for Introduction to Software Engineering
+
+### Project Team:
+
+- Leader: Boyang Tong
+- Team Members: Zhixia Lin, Zongbao Zhang, Tianci Wang, Na Li
+- Advisor: Ting Wang
+
+### Technologies Used:
+
+- SpringBoot
+- Universal Mapper and Mybatis
+- Thymeleaf
+- Bootstrap
+- Mysql
+- Gradle
+
+* log4j2 and Druid Connection Pool
+
+### Usage Instructions
+
+#### IntelliJ IDEA (or other IDEs)
+
+1. Import `init.sql` into your database.
+2. Import the project into **IntelliJ IDEA**, then use Gradle to import the required JAR files.
+3. Modify the database connection settings and user authentication in the file `*/rmms/src/main/resources/application.yml`.
+4. Run the main function `App.java`. Finally, open your browser and navigate to `http://localhost:8090/rmms` to access the system.
+
+---
+
+
 # 道路综合巡查管理系统
+软件工程导论的课程设计
 
 ### 项目团队：
 
