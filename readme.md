@@ -1,6 +1,6 @@
 # Comprehensive Road Inspection Management System
 
-Course Design for Introduction to Software Engineering
+Course Design for Introduction to Software Engineering in Zhejiang University of Technology
 
 ### Project Team:
 
