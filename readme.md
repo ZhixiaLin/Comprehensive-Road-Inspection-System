@@ -28,6 +28,27 @@ Course Design for Introduction to Software Engineering in Zhejiang University of
 3. Modify the database connection settings and user authentication in the file `*/rmms/src/main/resources/application.yml`.
 4. Run the main function `App.java`. Finally, open your browser and navigate to `http://localhost:8090/rmms` to access the system.
 5. Default login username: `100101`,password: `123456`, you can find user information in the `assets/rmmsDB(0105).sql` file,`users` table.
+
+### Preview
+
+#### Login Page
+<img src="assets/image/login.png" alt="Login Page" style="width:50%; height:50%;">
+
+#### Home Page
+<img src="assets/image/home.png" alt="Home Page" style="width:50%; height:50%;">
+
+#### User Page
+<img src="assets/image/user.png" alt="User Page" style="width:50%; height:50%;">
+
+#### Road Page
+<img src="assets/image/road.png" alt="Road Page" style="width:50%; height:50%;">
+<img src="assets/image/road_add.png" alt="Road Add" style="width:50%; height:50%;">
+<img src="assets/image/road_show_in_map.png" alt="Road Show In Map" style="width:50%; height:50%;">
+
+#### Road Disease Page
+<img src="assets/image/roadDisease.png" alt="Road Disease Page" style="width:50%; height:50%;">
+
+
 ---
 
 
