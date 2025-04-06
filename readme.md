@@ -52,7 +52,7 @@ Course Design for Introduction to Software Engineering in Zhejiang University of
 
 - Chinese docx version: [项目设计文档](assets/project_description_document/chinese_version_original/智能道路综合巡查管理系统文档.docx)
 - Chinese pdf version: [项目设计文档](assets/project_description_document/chinese_version_original/智能道路综合巡查管理系统文档.pdf)
-- English markdown version: [Project Description Document](assets/project_description_document/english_version/Intelligent Road Patrol Management System.md)
+- English markdown version: [Project Description Document](assets/project_description_document/english_version/IntelligentRoadPatrolManagementSystem.md)
 
 **Note:**  
 The English version is a translation of the original Chinese document and may not be as detailed.  
