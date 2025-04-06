@@ -48,6 +48,17 @@ Course Design for Introduction to Software Engineering in Zhejiang University of
 #### Road Disease Page
 <img src="assets/image/roadDisease.png" alt="Road Disease Page" style="width:50%; height:50%;">
 
+### Project Description Document
+
+- Chinese docx version: [项目设计文档](assets/project_description_document/chinese_version_original/智能道路综合巡查管理系统文档.docx)
+- Chinese pdf version: [项目设计文档](assets/project_description_document/chinese_version_original/智能道路综合巡查管理系统文档.pdf)
+- English markdown version: [Project Description Document](assets/project_description_document/english_version/Intelligent Road Patrol Management System.md)
+
+**Note:**  
+The English version is a translation of the original Chinese document and may not be as detailed.  
+It is recommended to refer to the Chinese version for a more comprehensive understanding of the project.
+
+*I spent a lot of time on drawing the UML diagram(take a look!), which is the most important part in this course design program.*
 
 ---
 
