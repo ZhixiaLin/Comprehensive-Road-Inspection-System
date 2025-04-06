@@ -27,7 +27,7 @@ Course Design for Introduction to Software Engineering in Zhejiang University of
 2. Import the project into **IntelliJ IDEA**, then use Gradle to import the required JAR files.
 3. Modify the database connection settings and user authentication in the file `*/rmms/src/main/resources/application.yml`.
 4. Run the main function `App.java`. Finally, open your browser and navigate to `http://localhost:8090/rmms` to access the system.
-
+5. Default login username: `100101`,password: `123456`, you can find user information in the `assets/rmmsDB(0105).sql` file,`users` table.
 ---
 
 
