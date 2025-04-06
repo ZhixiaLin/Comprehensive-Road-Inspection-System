@@ -56,7 +56,8 @@ Course Design for Introduction to Software Engineering in Zhejiang University of
 
 **Note:**  
 The English version is a translation of the original Chinese document and may not be as detailed.  
-It is recommended to refer to the Chinese version for a more comprehensive understanding of the project.
+It is highly recommended to refer to the Chinese version for a more comprehensive understanding of the project.
+Maybe downloading the pdf to view in local is better than viewing in web.
 
 *I spent a lot of time on drawing the UML diagram(take a look!), which is the most important part in this course design program.*
 
