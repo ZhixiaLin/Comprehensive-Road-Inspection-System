@@ -42,20 +42,22 @@
 <div class="message warning">
     <div class="inset">
         <div class="login-head">
-            <h1>请先登录</h1>
+            <h1>Please Log in</h1>
+
             <div class="alert-close"></div>
         </div>
         <form th:action="@{/security/login}" method="post" th:object="${user}">
             <li>
-                <input type="text" class="text" name="userNo" placeholder="请输入账号"><a href="#" class=" icon user"></a>
+                <input type="text" class="text" name="userNo" placeholder="Username"><a href="#" class=" icon user"></a>
             </li>
             <div class="clear"></div>
             <li>
-                <input type="password" name="userPwd" placeholder="请输入密码"><a href="#" class="icon lock"></a>
+                <input type="password" name="userPwd" placeholder="Password"><a href="#" class="icon lock"></a>
             </li>
             <div class="clear"></div>
+            <h6 style="text-align: center;">Default Username: 100101 Password: 123456</h6>
             <div class="submit">
-                <input type="submit" value="登录">
+                <input type="submit" value="Log in">
 <!--                <input type="submit" value="注册" name="isSignUp">-->
                 <div class="clear"></div>
             </div>
